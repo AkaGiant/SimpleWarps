@@ -1,0 +1,22 @@
+name: SimpleWarps
+version: '${project.version}'
+main: me.akagiant.simplewarps.Main
+api-version: 1.19
+authors: [ AkaGiant ]
+description: A Simple Warp Hadling System for Minecraft 1.19
+website: https://github.com/akagiant/SimpleWarps
+
+commands:
+  simplewarps:
+    description: lol
+
+permissions:
+  SimpleWarps.*:
+    default: op
+    description: Allows the holder access to all SimpleWarps Commands and Systems.
+    children:
+      SimpleWarps.create: true
+  SimpleWarps.create:
+    description: Allows the holder to create new Warps
+  SimpleWarps.delete:
+    description: Allows the delete to delete Warps

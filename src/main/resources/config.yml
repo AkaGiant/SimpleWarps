@@ -1,0 +1,27 @@
+menu:
+  warp_rows: 9 # MAX 9, MINIMUM 1
+  warp_columns: 4 # MAX 5, MINIMUM 1, FINAL ROW IS FOR NAVIGATION
+  # The Navigation row is placed +1 to the warp_columns section.
+  navigation:
+    # This + warp_columns must be equal to or less than 6,
+    # if it's greater, warp_rows defaults to 5,
+    # and navigation is pushed to the final row.
+    extra_spacing: 1
+    next_page:
+      x: 3
+      material: DARK_OAK_BUTTON
+      title: "&aNext Page"
+      lore:
+        - "&7Click for next page"
+    close:
+      x: 4
+      material: BARRIER
+      title: "&cClose"
+      lore:
+        - "&7Click to close"
+    previous_page:
+      x: 5
+      material: DARK_OAK_BUTTON
+      title: "&aPrevious Page"
+      lore:
+        - '&7Click to go back'
