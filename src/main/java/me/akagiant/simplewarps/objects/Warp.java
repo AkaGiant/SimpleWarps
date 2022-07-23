@@ -1,6 +1,8 @@
-package me.akagiant.simplewarps;
+package me.akagiant.simplewarps.objects;
 
 import me.akagiant.giantapi.util.ColorManager;
+import me.akagiant.simplewarps.Main;
+import me.akagiant.simplewarps.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
@@ -14,6 +16,7 @@ public class Warp {
 
 
     public Warp (String warpName, Location location) {
+
         // Convert values to 2 decimal places.
         Main.warps.getConfig().set("warps." + warpName + ".worldName", location.getWorld().getName());
         Main.warps.getConfig().set("warps." + warpName + ".x", Util.convertTo2DecimalPlaces(location.getX()));
@@ -23,7 +26,6 @@ public class Warp {
         Main.warps.getConfig().set("warps." + warpName + ".pitch", Util.convertTo2DecimalPlaces((double) location.getPitch()));
         Main.warps.saveConfig();
 
-        ColorManager.formatColours("amf;kamfw")
     }
 
     private static ConfigurationSection getSection(String warpName) {
@@ -36,4 +38,12 @@ public class Warp {
     public static Double getZ(String warpName) { return getSection(warpName).getDouble("z"); }
     public static Float getPitch(String warpName) { return (float) getSection(warpName).getDouble("pitch"); }
     public static Float getYaw(String warpName) { return (float) getSection(warpName).getDouble("yaw"); }
+
+
+    public static boolean warpExists(String name) {
+        for (String key : Main.warps.getConfig().getConfigurationSection("warps").getKeys(false)) {
+            if (key.equals(name)) return true;
+        }
+        return false;
+    }
 }

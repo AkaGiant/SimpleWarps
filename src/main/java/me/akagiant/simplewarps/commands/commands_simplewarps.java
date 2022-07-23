@@ -1,8 +1,7 @@
 package me.akagiant.simplewarps.commands;
 
 import me.akagiant.simplewarps.Main;
-import me.akagiant.simplewarps.Warp;
-import org.bukkit.Bukkit;
+import me.akagiant.simplewarps.objects.Warp;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -25,7 +24,12 @@ public class commands_simplewarps implements CommandExecutor {
 
         switch (args[0]) {
             case "create": {
+                if (Warp.warpExists(args[1])) {
+                    player.sendMessage("A Warp with that name already exists!");
+                    return false;
+                }
                 new Warp(args[1], player.getLocation());
+                player.sendMessage("New Warp Crated: " + args[1]);
                 break;
             }
             case "list": {
